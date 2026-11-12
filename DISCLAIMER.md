@@ -8,7 +8,7 @@ If you do not agree, do not use the software.
 
 - **Do not operate, read or interact with this software while driving.** Use it
   only when the vehicle is safely parked, or let a passenger operate it.
-- The software declares itself to Android Automotive OS as
+- The software declares itself to Android Auto and Android Automotive OS as
   "distraction-optimized". **This is a self-declaration made by the app. It has
   not been reviewed, tested or certified by Google, by any vehicle manufacturer,
   or by any safety authority.** It does not mean the software is safe to use

@@ -3,14 +3,18 @@
 [![Release](https://img.shields.io/github/v/release/davesinpi/PrivaCarBrowser)](../../releases)
 [![License](https://img.shields.io/github/license/davesinpi/PrivaCarBrowser)](LICENSE)
 ![Android](https://img.shields.io/badge/Android-10%2B-3DDC84?logo=android&logoColor=white)
+![Android Auto](https://img.shields.io/badge/Android_Auto-Android_15%2B_phones-34A853?logo=androidauto&logoColor=white)
 ![Android Automotive](https://img.shields.io/badge/Android_Automotive-head_units-4285F4?logo=android&logoColor=white)
 
 > **Read the [DISCLAIMER](DISCLAIMER.md) before installing or using this app.**
 > Do not interact with it while driving.
 
-A privacy-focused web browser for Android Automotive head units: one full-screen
-`WebView` that declares itself to the car as a distraction-optimized
-navigation/media app, so Android Automotive OS will run and draw it.
+A privacy-focused web browser for car screens: one full-screen `WebView` that
+declares itself to the car as a distraction-optimized navigation/media app. It
+runs on two kinds of car screen:
+
+- **Android Auto**, projected from a phone running **Android 15 or newer**
+- **Android Automotive OS**, built into the car's head unit
 
 ## Contents
 - [Quick start](#quick-start)
@@ -23,35 +27,56 @@ navigation/media app, so Android Automotive OS will run and draw it.
 
 ## Quick start
 
-### Requirements
-- **An Android Automotive OS head unit running Android 10 (API 29) or newer.**
-  Any Android 10+ phone, tablet or emulator also works for trying it out.
+Download `PrivaCar-1.0.apk` from the [latest release](../../releases/latest).
+*(Optional)* check it's genuine: the signing certificate's SHA-256 must be
+`81:da:31:bf:df:0d:8e:80:8e:27:65:99:9f:bd:55:22:b0:b6:de:c9:7f:08:77:ca:a2:6c:53:18:dc:c0:fa:a0`
+(`apksigner verify --print-certs PrivaCar-1.0.apk`).
+
+Then follow the section for your car.
+
+### Android Auto (phone)
+
+**Requirements**
+- **A phone running Android 15 or newer.** On Android 14 and older, Android Auto
+  does not show apps like PrivaCar, even though it installs (see
+  [Limitations](#limitations)).
+- **Android Auto** with **Unknown sources** turned on (steps below).
+- A car or head unit that supports Android Auto (USB or wireless).
+
+**Install**
+1. Install `PrivaCar-1.0.apk` on the phone (open the file and allow installing
+   from that source, or use `adb install PrivaCar-1.0.apk`). Android may show a
+   Play Protect warning for a sideloaded app; choose *More details* → *Install
+   anyway*.
+2. Turn on **Unknown sources** in Android Auto: open Android Auto's settings, tap
+   **Version** 10 times to unlock developer mode, then **⋮** → **Developer
+   settings** → turn on **Unknown sources**.
+3. Connect the phone to the car. **PrivaCar** appears in Android Auto's app
+   launcher.
+
+### Android Automotive (built-in head unit)
+
+**Requirements**
+- **A head unit running Android Automotive OS 10 (API 29) or newer.**
 - **A way to install an APK on it.** Usually that means turning on developer
   options and ADB debugging on the head unit. Many production cars don't allow
   this. Check yours, and your warranty, first.
-- **An up-to-date Android System WebView** (it powers the browser and the voice
-  bridge).
-- **An internet connection** (Wi-Fi or the car's own connection).
-- *Optional:* a speech recognition service, such as the Google app, for
-  **Voice search**. It's the only way to search while the car is moving, because
-  Android Automotive disables the keyboard while driving.
 
-### Install
-1. Download `PrivaCar-1.0.apk` from the [latest release](../../releases/latest).
-2. *(Optional)* Check it's genuine. The signing certificate's SHA-256 must be
-   `81:da:31:bf:df:0d:8e:80:8e:27:65:99:9f:bd:55:22:b0:b6:de:c9:7f:08:77:ca:a2:6c:53:18:dc:c0:fa:a0`:
-   ```
-   apksigner verify --print-certs PrivaCar-1.0.apk
-   ```
-3. With the head unit connected over ADB:
-   ```
-   adb install PrivaCar-1.0.apk
-   ```
-4. Open **PrivaCar** from the car's app grid.
+**Install**
+1. With the head unit connected over ADB: `adb install PrivaCar-1.0.apk`
+2. Open **PrivaCar** from the car's app grid.
 
 > **Try it without a car:** in Android Studio's Device Manager, create a device
 > from an **Automotive** system image (for example "Automotive (1024p landscape)"),
 > start it, and `adb install` the APK.
+
+### Both
+- **An up-to-date Android System WebView** (it powers the browser and the voice
+  bridge).
+- **An internet connection.**
+- *Optional:* a speech recognition service, such as the Google app, for
+  **Voice search**. It's the only way to search while the car is moving, because
+  the car disables the keyboard while driving.
 
 ### First steps
 1. PrivaCar opens on DuckDuckGo. Tap the **⋮** button (bottom-right) to open the
@@ -146,31 +171,35 @@ Without it the release APK is built unsigned.
 | `app/src/test/` | Unit tests |
 
 ## Limitations
-- Declaring the car-app categories makes Android Automotive head units *run* the
-  app. It does not make it an officially approved Android Auto or Android
-  Automotive app, and the car still disables the keyboard while driving.
-- Phone projection (**Android Auto**) is not supported. For that side, see
-  [AutoRepack](#related-projects).
-- Tested on emulators (Android 17 phone, Android Automotive 15). Voice search,
-  the DRM video path and real head units have not been tested yet.
+- **Android Auto needs a phone on Android 15 or newer.** On Android 14 and older,
+  Android Auto only shows media, messaging and Car App Library apps, so PrivaCar
+  installs but never appears in the car. This was tested on an Android 14 phone:
+  it did not appear when sideloaded, when marked as a Play Store install, or when
+  repacked with [AutoRepack](#related-projects).
+- Declaring the car-app categories makes the car *run* the app. It does not make
+  it an officially approved Android Auto or Android Automotive app, and the car
+  still disables the keyboard while driving.
+- Tested on the Android Automotive emulator (Android 15) and an Android phone
+  emulator. Android Auto on an Android 15+ phone, voice search, the DRM video
+  path and real head units have not been tested yet.
 - The home screen's map panel on Android Automotive does not use PrivaCar.
 
 ## Related projects
 
-**[AutoRepack](https://github.com/davesinpi/AutoRepack)** is the companion
-project for **Android Auto** (phone projection). The two cover the two kinds of
-car screen:
+**[AutoRepack](https://github.com/davesinpi/AutoRepack)** is a companion
+project that makes Android Auto copies of media and messaging apps you already
+have.
 
 | | PrivaCar | AutoRepack |
 |---|---|---|
-| Car platform | Android Automotive OS (built into the head unit) | Android Auto (projected from your phone) |
-| Runs on | The head unit | Your phone |
+| Car platform | Android Auto (Android 15+ phones) and Android Automotive OS | Android Auto |
+| Runs on | Your phone or the head unit | Your phone |
 | What it does | A privacy-focused web browser for the car screen | Makes an Android Auto copy of a media or messaging app you already have |
 | Language | Kotlin | Java |
 
-They solve different problems and don't depend on each other. AutoRepack copies
-only show up in Android Auto if the app is a media, messaging or Car App Library
-app, so it is not a way to run PrivaCar over phone projection.
+They solve different problems and don't depend on each other. PrivaCar doesn't
+need AutoRepack: on Android 15+ it appears in Android Auto by itself, and
+repacking it does not make it appear on Android 14 (tested).
 
 ## Credits
 Inspired by [AABrowser](https://github.com/kododake/AABrowser). PrivaCar is an independent implementation and shares no code with it.
