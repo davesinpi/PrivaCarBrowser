@@ -1,5 +1,10 @@
 # PrivaCar
 
+[![Release](https://img.shields.io/github/v/release/davesinpi/PrivaCarBrowser)](../../releases)
+[![License](https://img.shields.io/github/license/davesinpi/PrivaCarBrowser)](LICENSE)
+![Android](https://img.shields.io/badge/Android-10%2B-3DDC84?logo=android&logoColor=white)
+![Android Automotive](https://img.shields.io/badge/Android_Automotive-head_units-4285F4?logo=android&logoColor=white)
+
 > **Read the [DISCLAIMER](DISCLAIMER.md) before installing or using this app.**
 > Do not interact with it while driving.
 
@@ -84,10 +89,32 @@ Declaring the car-app categories makes Android Automotive head units *run* the
 app. It does not make it an officially approved Android Auto or Android
 Automotive app, and it does not change how the car restricts the keyboard while
 driving. Phone projection (Android Auto) gates non-Play apps separately, which is
-out of scope here, same as the original.
+out of scope here, same as the original. For the phone-projection side, see
+[AutoRepack](#related-projects).
+
+## Related projects
+
+**[AutoRepack](https://github.com/davesinpi/AutoRepack)** is the companion
+project for **Android Auto** (phone projection). The two cover the two kinds of
+car screen:
+
+| | PrivaCar | AutoRepack |
+|---|---|---|
+| Car platform | Android Automotive OS (built into the head unit) | Android Auto (projected from your phone) |
+| Runs on | The head unit | Your phone |
+| What it does | A privacy-focused web browser for the car screen | Makes an Android Auto copy of a media or messaging app you already have |
+| Language | Kotlin | Java |
+
+They solve different problems and don't depend on each other. AutoRepack copies
+only show up in Android Auto if the app is a media, messaging or Car App Library
+app, so it is not a way to run PrivaCar over phone projection.
 
 ## Background
 [`docs/AABrowser-3.3-how-it-works.md`](docs/AABrowser-3.3-how-it-works.md)
 documents how the original AABrowser (GPL-3.0, github.com/kododake/AABrowser)
-works. PrivaCar is an independent implementation inspired by it and is not
-affiliated with or endorsed by its author.
+works. PrivaCar is an independent implementation inspired by it, shares none of
+its code, and is not affiliated with or endorsed by its author.
+
+## License
+
+[MIT](LICENSE). Use of the app is also subject to the [DISCLAIMER](DISCLAIMER.md).
