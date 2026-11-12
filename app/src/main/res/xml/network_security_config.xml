@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Privacy hardening vs AABrowser: system CAs only. User-installed CAs are NOT
+     trusted, so a locally added certificate can't silently MITM browsing traffic. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config>
