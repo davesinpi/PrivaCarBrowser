@@ -32,7 +32,6 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = false
             signingConfig = signingConfigs.findByName("release")
         }
     }
@@ -45,8 +44,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
-    sourceSets["main"].java.srcDirs("src/main/kotlin")
-    sourceSets["test"].java.srcDirs("src/test/kotlin")
 }
 
 dependencies {
