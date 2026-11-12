@@ -8,12 +8,11 @@
 > **Read the [DISCLAIMER](DISCLAIMER.md) before installing or using this app.**
 > Do not interact with it while driving.
 
-A privacy-hardened rebuild of the AABrowser idea: one full-screen `WebView` that
-declares itself to the car head unit as a distraction-optimized
-navigation/media app, so Android Automotive OS will run and draw it. It keeps the
-car-usability tricks and drops the tracking.
+A privacy-focused web browser for Android Automotive head units: one full-screen
+`WebView` that declares itself to the car as a distraction-optimized
+navigation/media app, so Android Automotive OS will run and draw it.
 
-## What it does (same as AABrowser)
+## What it does
 - Full-screen WebView launched as a car app (`CAR_LAUNCHER` + `NAVIGATION` +
   `APP_MAPS` categories, `distractionOptimized=true`, head-unit-sized `<layout>`).
 - **Voice input polyfill:** injects `SpeechRecognition` and bridges it to the
@@ -26,10 +25,9 @@ car-usability tricks and drops the tracking.
 - Desktop user agent, HTML5 fullscreen video, HTTP confirm dialog, per-site
   scheme filtering, SSL-error prompt.
 
-## What's different: more privacy
-- **No analytics.** AABrowser POSTs an `app_open` event with a persistent UUID to
-  `stats1.kododake.work` on every launch. That whole path is gone: no tracker,
-  no stored ID, no network calls the user didn't start.
+## Privacy
+- **No analytics or telemetry.** No tracker, no stored ID, and no network calls
+  you didn't start.
 - **System CAs only.** `network_security_config` trusts the system store, *not*
   user-installed CAs, so a locally added cert can't silently MITM traffic.
 - **Third-party cookies blocked** and **Safe Browsing off** (it sends visited
@@ -89,7 +87,7 @@ Declaring the car-app categories makes Android Automotive head units *run* the
 app. It does not make it an officially approved Android Auto or Android
 Automotive app, and it does not change how the car restricts the keyboard while
 driving. Phone projection (Android Auto) gates non-Play apps separately, which is
-out of scope here, same as the original. For the phone-projection side, see
+out of scope here. For the phone-projection side, see
 [AutoRepack](#related-projects).
 
 ## Related projects
@@ -109,11 +107,8 @@ They solve different problems and don't depend on each other. AutoRepack copies
 only show up in Android Auto if the app is a media, messaging or Car App Library
 app, so it is not a way to run PrivaCar over phone projection.
 
-## Background
-[`docs/AABrowser-3.3-how-it-works.md`](docs/AABrowser-3.3-how-it-works.md)
-documents how the original AABrowser (GPL-3.0, github.com/kododake/AABrowser)
-works. PrivaCar is an independent implementation inspired by it, shares none of
-its code, and is not affiliated with or endorsed by its author.
+## Credits
+Inspired by [AABrowser](https://github.com/kododake/AABrowser). PrivaCar is an independent implementation and shares no code with it.
 
 ## License
 

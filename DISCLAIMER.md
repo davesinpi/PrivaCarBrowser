@@ -82,14 +82,11 @@ In those jurisdictions, the exclusions above apply to the fullest extent allowed
 ## 7. Affiliation and trademarks
 
 - PrivaCar is an independent project. It is **not affiliated with, endorsed by
-  or sponsored by** Google LLC, any vehicle or head-unit manufacturer, any
-  website or streaming service, or the author of AABrowser.
+  or sponsored by** Google LLC, any vehicle or head-unit manufacturer, or any
+  website or streaming service.
 - Android, Android Auto, Android Automotive, Google, Widevine, YouTube and
   DuckDuckGo are trademarks of their respective owners. They are mentioned only
   to describe compatibility and behavior.
-- `docs/AABrowser-3.3-how-it-works.md` describes the publicly available,
-  GPL-3.0 licensed AABrowser app for interoperability and educational purposes.
-  PrivaCar does not include AABrowser's code.
 
 ## 8. Your responsibility
 
