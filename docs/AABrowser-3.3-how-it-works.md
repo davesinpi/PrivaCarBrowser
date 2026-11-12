@@ -50,7 +50,7 @@ What each one does:
 - **`distractionOptimized=true`** (on both the app and the activity): tells Automotive OS the activity is safe to show while moving. Without it the system blocks the activity once the car is in motion. Nothing checks this; the app just declares it.
 - **`NAVIGATION` / `APP_MAPS` categories + `MAP_TEMPLATES` / `ACCESS_SURFACE`**: navigation apps get the most screen and the most leeway on car platforms, so the app puts itself in that class.
 - **`com.google.android.gms.car.application` → `uses media`**: the descriptor that makes Android Auto (phone projection) see the app at all.
-- **`resizeableActivity`, `max_aspect` 4–5, `configChanges`**: the WebView keeps working across the odd sizes, densities and day/night switches of head units, without the activity restarting.
+- **`resizeableActivity`, `max_aspect` 4 to 5, `configChanges`**: the WebView keeps working across the odd sizes, densities and day/night switches of head units, without the activity restarting.
 
 > Note: on **Android Auto phone projection**, Google normally only shows apps that come from the Play Store and use the templates. The app's start page promotes the same developer's **AAAnything** project ("Bring Your Favorite Apps to Android Auto"), which suggests that on projection it relies on a separate unlock/sideload method rather than its manifest alone. The manifest declarations are confirmed from the APK. The exact projection workaround isn't in this APK, so this part is inferred.
 
