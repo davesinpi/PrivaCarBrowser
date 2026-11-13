@@ -39,7 +39,8 @@ Then follow the section for your car.
 **Requirements**
 - **A phone running Android 15 or newer.** On Android 14 and older, Android Auto
   does not show apps like PrivaCar, even though it installs (see
-  [Limitations](#limitations)).
+  [Limitations](#limitations)). On those phones, use
+  [Curbside](https://github.com/davesinpi/Curbside) instead.
 - **Android Auto** with **Unknown sources** turned on (steps below).
 - A car or head unit that supports Android Auto (USB or wireless).
 
@@ -175,7 +176,8 @@ Without it the release APK is built unsigned.
   Android Auto only shows media, messaging and Car App Library apps, so PrivaCar
   installs but never appears in the car. This was tested on an Android 14 phone:
   it did not appear when sideloaded, when marked as a Play Store install, or when
-  repacked with [AutoRepack](#related-projects).
+  repacked with [AutoRepack](#related-projects). For Android 14 phones, see
+  [Curbside](https://github.com/davesinpi/Curbside), which uses a different route.
 - Declaring the car-app categories makes the car *run* the app. It does not make
   it an officially approved Android Auto or Android Automotive app, and the car
   still disables the keyboard while driving.
@@ -186,20 +188,19 @@ Without it the release APK is built unsigned.
 
 ## Related projects
 
-**[AutoRepack](https://github.com/davesinpi/AutoRepack)** is a companion
-project that makes Android Auto copies of media and messaging apps you already
-have.
+Three independent projects for getting more out of Android Auto. They don't depend on each other.
 
-| | PrivaCar | AutoRepack |
-|---|---|---|
-| Car platform | Android Auto (Android 15+ phones) and Android Automotive OS | Android Auto |
-| Runs on | Your phone or the head unit | Your phone |
-| What it does | A privacy-focused web browser for the car screen | Makes an Android Auto copy of a media or messaging app you already have |
-| Language | Kotlin | Java |
+| | PrivaCar | [Curbside](https://github.com/davesinpi/Curbside) | [AutoRepack](https://github.com/davesinpi/AutoRepack) |
+|---|---|---|---|
+| What it does | Privacy-focused web browser for the car screen | Web and video browser for the car screen | Makes an Android Auto copy of a media or messaging app you already have |
+| Android Auto phones | Android 15 and newer | **Android 14 and older** (and newer) | Any |
+| Android Automotive head units | Yes | No | No |
+| Language | Kotlin | Kotlin | Java |
 
-They solve different problems and don't depend on each other. PrivaCar doesn't
-need AutoRepack: on Android 15+ it appears in Android Auto by itself, and
-repacking it does not make it appear on Android 14 (tested).
+Which one? On **Android 15+** or a built-in Android Automotive head unit, use PrivaCar.
+On **Android 14 and older**, Android Auto won't show PrivaCar (repacking it doesn't help,
+tested), so use Curbside. For a media or messaging app that isn't on Android Auto, use
+AutoRepack.
 
 ## Credits
 Inspired by [AABrowser](https://github.com/kododake/AABrowser). PrivaCar is an independent implementation and shares no code with it.
